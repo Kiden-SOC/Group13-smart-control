@@ -89,7 +89,7 @@ motion 1  (wait 6 s)     -> FALSE TRIGGER, light OFF
 tap out 01:02:03:04
 ```
 
-## 6. Known limitations (be honest about these)
+## 6. Known limitations
 
 - The simulated clock restarts at 09:00:00 after every reboot (it is not persisted).
 - Occupancy and the event log are written separately; a crash between them can leave one without the other.
