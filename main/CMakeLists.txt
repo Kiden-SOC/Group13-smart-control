@@ -1,0 +1,23 @@
+idf_component_register(
+    SRCS
+        "app_main.c"
+        "modules/sync_manager.c"
+        "modules/rc522.c"
+        "modules/access_control.c"
+        "modules/occupancy.c"
+        "modules/room_control.c"
+        "modules/schedule.c"
+        "modules/storage.c"
+        "modules/communication.c"
+        "modules/serial_menu.c"
+    INCLUDE_DIRS
+        "include"
+    REQUIRES
+        driver
+        esp_driver_ledc
+        freertos
+        esp_timer
+        nvs_flash
+        fatfs
+        vfs
+)

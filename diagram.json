@@ -1,0 +1,550 @@
+{
+  "version": 1,
+  "author": "Makerere CoCIS Group",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "board-mfrc522",
+      "id": "rfid_in",
+      "top": -220,
+      "left": -280,
+      "attrs": {
+        "uid": "01:02:03:04"
+      }
+    },
+    {
+      "type": "board-mfrc522",
+      "id": "rfid_out",
+      "top": 120,
+      "left": -280,
+      "attrs": {
+        "uid": "01:02:03:04"
+      }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "room1_pir",
+      "top": -220,
+      "left": 280,
+      "attrs": {
+        "delayTime": "3",
+        "retrigger": "1"
+      }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "room2_pir",
+      "top": 120,
+      "left": 280,
+      "attrs": {
+        "delayTime": "3",
+        "retrigger": "1"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_door_in",
+      "top": -120,
+      "left": -80,
+      "attrs": {
+        "color": "green",
+        "label": "Entry Door"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_door_out",
+      "top": 40,
+      "left": -80,
+      "attrs": {
+        "color": "blue",
+        "label": "Exit Door"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "room1_led",
+      "top": -120,
+      "left": 420,
+      "attrs": {
+        "color": "yellow",
+        "label": "Room 1 Light"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "room2_led",
+      "top": 40,
+      "left": 420,
+      "attrs": {
+        "color": "yellow",
+        "label": "Room 2 Light"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_din",
+      "top": -80,
+      "left": -80,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_dout",
+      "top": 80,
+      "left": -80,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "room1_res",
+      "top": -80,
+      "left": 420,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "room2_res",
+      "top": 80,
+      "left": 420,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -260,
+      "left": 60,
+      "attrs": {
+        "volume": "0.2"
+      }
+    },
+    {
+      "type": "wokwi-microsd-card",
+      "id": "sdcard",
+      "top": 240,
+      "left": -60,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label_room1_pir",
+      "top": -250,
+      "left": 260,
+      "attrs": {
+        "text": "ROOM 1  PIR (GPIO26)"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label_room1_led",
+      "top": -150,
+      "left": 400,
+      "attrs": {
+        "text": "ROOM 1  LIGHT (GPIO32)"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label_room2_pir",
+      "top": 90,
+      "left": 260,
+      "attrs": {
+        "text": "ROOM 2  PIR (GPIO27)"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label_room2_led",
+      "top": 10,
+      "left": 400,
+      "attrs": {
+        "text": "ROOM 2  LIGHT (GPIO33)"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "esp:3V3",
+      "rfid_in:3.3V",
+      "red",
+      [
+        "v-30",
+        "h-140"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "rfid_in:GND",
+      "black",
+      [
+        "v-20",
+        "h-130"
+      ]
+    ],
+    [
+      "esp:18",
+      "rfid_in:SCK",
+      "orange",
+      [
+        "v-50",
+        "h-160"
+      ]
+    ],
+    [
+      "esp:23",
+      "rfid_in:MOSI",
+      "green",
+      [
+        "v-60",
+        "h-150"
+      ]
+    ],
+    [
+      "esp:19",
+      "rfid_in:MISO",
+      "blue",
+      [
+        "v-70",
+        "h-140"
+      ]
+    ],
+    [
+      "esp:4",
+      "rfid_in:SDA",
+      "purple",
+      [
+        "v-80",
+        "h-130"
+      ]
+    ],
+    [
+      "esp:22",
+      "rfid_in:RST",
+      "gray",
+      [
+        "v-90",
+        "h-120"
+      ]
+    ],
+    [
+      "esp:3V3",
+      "rfid_out:3.3V",
+      "red",
+      [
+        "v60",
+        "h-140"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "rfid_out:GND",
+      "black",
+      [
+        "v50",
+        "h-130"
+      ]
+    ],
+    [
+      "esp:18",
+      "rfid_out:SCK",
+      "orange",
+      [
+        "v70",
+        "h-160"
+      ]
+    ],
+    [
+      "esp:23",
+      "rfid_out:MOSI",
+      "green",
+      [
+        "v80",
+        "h-150"
+      ]
+    ],
+    [
+      "esp:19",
+      "rfid_out:MISO",
+      "blue",
+      [
+        "v90",
+        "h-140"
+      ]
+    ],
+    [
+      "esp:16",
+      "rfid_out:SDA",
+      "purple",
+      [
+        "v100",
+        "h-130"
+      ]
+    ],
+    [
+      "esp:21",
+      "rfid_out:RST",
+      "gray",
+      [
+        "v110",
+        "h-120"
+      ]
+    ],
+    [
+      "esp:25",
+      "led_door_in:A",
+      "green",
+      [
+        "v-20",
+        "h-20"
+      ]
+    ],
+    [
+      "led_door_in:C",
+      "r_din:1",
+      "black",
+      [
+        "v10"
+      ]
+    ],
+    [
+      "r_din:2",
+      "esp:GND.1",
+      "black",
+      [
+        "v20",
+        "h20"
+      ]
+    ],
+    [
+      "esp:14",
+      "led_door_out:A",
+      "blue",
+      [
+        "v20",
+        "h-20"
+      ]
+    ],
+    [
+      "led_door_out:C",
+      "r_dout:1",
+      "black",
+      [
+        "v10"
+      ]
+    ],
+    [
+      "r_dout:2",
+      "esp:GND.1",
+      "black",
+      [
+        "v-20",
+        "h20"
+      ]
+    ],
+    [
+      "esp:17",
+      "bz1:1",
+      "red",
+      [
+        "v-80",
+        "h20"
+      ]
+    ],
+    [
+      "bz1:2",
+      "esp:GND.1",
+      "black",
+      [
+        "v40",
+        "h-40"
+      ]
+    ],
+    [
+      "esp:3V3",
+      "room1_pir:VCC",
+      "red",
+      [
+        "v-40",
+        "h180"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "room1_pir:GND",
+      "black",
+      [
+        "v-30",
+        "h190"
+      ]
+    ],
+    [
+      "esp:26",
+      "room1_pir:OUT",
+      "gold",
+      [
+        "v-20",
+        "h200"
+      ]
+    ],
+    [
+      "esp:32",
+      "room1_led:A",
+      "yellow",
+      [
+        "v-10",
+        "h240"
+      ]
+    ],
+    [
+      "room1_led:C",
+      "room1_res:1",
+      "black",
+      [
+        "v10"
+      ]
+    ],
+    [
+      "room1_res:2",
+      "esp:GND.1",
+      "black",
+      [
+        "v20",
+        "h-240"
+      ]
+    ],
+    [
+      "esp:3V3",
+      "room2_pir:VCC",
+      "red",
+      [
+        "v40",
+        "h180"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "room2_pir:GND",
+      "black",
+      [
+        "v50",
+        "h190"
+      ]
+    ],
+    [
+      "esp:27",
+      "room2_pir:OUT",
+      "gold",
+      [
+        "v60",
+        "h200"
+      ]
+    ],
+    [
+      "esp:33",
+      "room2_led:A",
+      "yellow",
+      [
+        "v30",
+        "h240"
+      ]
+    ],
+    [
+      "room2_led:C",
+      "room2_res:1",
+      "black",
+      [
+        "v10"
+      ]
+    ],
+    [
+      "room2_res:2",
+      "esp:GND.1",
+      "black",
+      [
+        "v-20",
+        "h-240"
+      ]
+    ],
+    [
+      "esp:3V3",
+      "sdcard:VCC",
+      "red",
+      [
+        "v120",
+        "h-30"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "sdcard:GND",
+      "black",
+      [
+        "v130",
+        "h-20"
+      ]
+    ],
+    [
+      "esp:18",
+      "sdcard:SCK",
+      "orange",
+      [
+        "v140",
+        "h-10"
+      ]
+    ],
+    [
+      "esp:23",
+      "sdcard:DI",
+      "green",
+      [
+        "v150",
+        "h0"
+      ]
+    ],
+    [
+      "esp:19",
+      "sdcard:DO",
+      "blue",
+      [
+        "v160",
+        "h10"
+      ]
+    ],
+    [
+      "esp:13",
+      "sdcard:CS",
+      "brown",
+      [
+        "v170",
+        "h20"
+      ]
+    ]
+  ]
+}
